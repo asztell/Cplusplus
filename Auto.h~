@@ -1,14 +1,9 @@
 #ifndef AUTO_H
 #define AUTO_H
 
-
 #include <string>
 
-
 namespace cs20 { 
-
-
-
 
 class Auto {
 public:

@@ -3,6 +3,7 @@
 
 #include "Stack.h"
 
+
 namespace cs20 {
 
 template <class Object>

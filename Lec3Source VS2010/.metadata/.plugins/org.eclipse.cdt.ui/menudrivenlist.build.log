@@ -1,0 +1,6 @@
+10:47:08 **** Incremental Build of configuration Default for project menudrivenlist ****
+make all 
+make: *** No rule to make target `all'.  Stop.
+
+10:47:08 Build Finished (took 85ms)
+

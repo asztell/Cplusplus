@@ -1,0 +1,6 @@
+11:31:07 **** Incremental Build of configuration Build (GNU) for project menudrivenlist1 ****
+make all 
+make: *** No rule to make target `all'.  Stop.
+
+11:31:07 Build Finished (took 80ms)
+

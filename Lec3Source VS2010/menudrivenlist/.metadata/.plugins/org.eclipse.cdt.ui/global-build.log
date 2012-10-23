@@ -1,0 +1,13 @@
+
+Invoking autoreconf in build directory: /home/krutoy/Documents/github/C++/Cplusplus/Lec3Source VS2010/menudrivenlist/menudrivenlist1
+
+sh -c "autoreconf -i" 
+Can't exec "libtoolize": No such file or directory at /usr/bin/autoreconf line 196.
+Use of uninitialized value in pattern match (m//) at /usr/bin/autoreconf line 196.
+autoreconf: `configure.ac' or `configure.in' is required
+
+Configuration failed with error
+Build stopped
+()11:31:07 **** Incremental Build of configuration Build (GNU) for project menudrivenlist1 ****
+make all 
+make: *** No rule to make target `all'.  Stop.

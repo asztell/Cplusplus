@@ -120,14 +120,29 @@ bool List<Object>::isInDecreasingOrder() const {
 	//use remove
 	ListNode<Object> * frontFinger, * backFinger;
 	bool listIsDecreasing = true;
-	for ( backFinger = head->getNext(); backFinger == NULL ; frontFinger = backFinger->getNext() ) {
+	for ( backFinger = head->getNext(); backFinger != NULL ; 
+		frontFinger = backFinger->getNext() ) {
+		if( backFinger->getElement() < frontFinger->getElement() ) {
+			cout << "for loop" << endl;
+			listIsDecreasing = false;
+			break;
+		} else if ( frontFinger == NULL ) {
+			break;
+		}
+		backFinger = frontFinger;
+	}
+/*	backFinger = head->getNext();
+	do {
+		frontFinger = backFinger->getNext();
 		if( backFinger->getElement() < frontFinger->getElement() ) {
 			listIsDecreasing = false;
 			break;
 		} else if ( frontFinger == NULL ) {
 			break;
 		}
-	}
+		cout << "while" << endl;
+		backFinger = frontFinger;
+	} while ( backFinger != NULL );*/
 	if( backFinger == NULL ) {
 		listIsDecreasing = false;
 	}

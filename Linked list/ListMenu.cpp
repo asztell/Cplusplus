@@ -38,9 +38,9 @@ int main(int argc, char* argv[]) {
 			}
 			break;
 		case ISDECREASING:
-			if (list.isInDecreasingOrder()) {
+			if ( list.isInDecreasingOrder() == true ) {
 				cout << "list is in decreasing order" << endl;
-			} else if (!list.isInDecreasingOrder()){
+			} else {
 				cout << "list is not in decreasing order" << endl;
 			}
 			break;

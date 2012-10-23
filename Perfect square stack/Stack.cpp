@@ -37,8 +37,9 @@ void Stack<Object>::makeEmpty() {
 
 template <class Object>
 void Stack<Object>::push( const Object& data ) {
-	double sqrtdata = double sqrt(data->getElement());
-	int castedData = (int)sqrt(data->getElement());
+	double doubledata = (double)data;
+	double sqrtdata = sqrt(doubledata);
+	int castedData = (int)sqrtdata;
 	if (sqrtdata == castedData) {
 		StackNode<Object>* newNode = new StackNode<Object>( data, topNode );
 		topNode = newNode;

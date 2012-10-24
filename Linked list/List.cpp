@@ -119,36 +119,36 @@ template <class Object>
 bool List<Object>::isInDecreasingOrder() const {
 	//use remove
 	ListNode<Object> * frontFinger, * backFinger;
-	bool listIsDecreasing = true;
-	for ( backFinger = head->getNext(); backFinger != NULL ; 
-		frontFinger = backFinger->getNext() ) {
+	bool listIsDecreasing = false;
+	backFinger = head->getNext();
+	frontFinger = backFinger->getNext();
+	for ( ; frontFinger != tail ; frontFinger = backFinger->getNext() ) {
 		if( backFinger->getElement() < frontFinger->getElement() ) {
-			cout << "for loop" << endl;
+			//we know that list is increasing on this iteration,
+			//therefore there's no way that the list can ever be decreasing
+			//=> we can exit the loop, we're done.
 			listIsDecreasing = false;
 			break;
-		} else if ( frontFinger == NULL ) {
-			break;
-		}
-		backFinger = frontFinger;
+		} else if ( backFinger->getElement() == frontFinger->getElement() ) {
+			//curr. node equals next node, it's still possible that the list
+			//can be decreasing, therefore we have to continue checking
+			backFinger = frontFinger;
+			continue;
+		} else { //backFinger is greater than frontFinger
+			//the list looks like it's decreasing, so we set the listIsDecreasing flag
+			//to true, however it's still possible for one of the future nodes
+			//to be greater, so we must continue checking until the end.
+			listIsDecreasing = true;
+			backFinger = frontFinger;
+			continue;
+		}		
 	}
-/*	backFinger = head->getNext();
-	do {
-		frontFinger = backFinger->getNext();
-		if( backFinger->getElement() < frontFinger->getElement() ) {
-			listIsDecreasing = false;
-			break;
-		} else if ( frontFinger == NULL ) {
-			break;
-		}
-		cout << "while" << endl;
-		backFinger = frontFinger;
-	} while ( backFinger != NULL );*/
+
 	if( backFinger == NULL ) {
 		listIsDecreasing = false;
 	}
 	return ( listIsDecreasing );
 }
-
 // Deep copy of linked list
 template <class Object>
 const List<Object>& List<Object>::operator =( const List<Object>& rhs ) {

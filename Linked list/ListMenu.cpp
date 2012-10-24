@@ -12,7 +12,7 @@
 using namespace std;
 using namespace cs20;
 
-enum CHOICE {MAKEEMPTY, REMOVE, ISEMPTY, ISDECREASING, FINDPREVIOUS, INSERT, QUIT, PRINT, INSERTBACK };
+enum CHOICE {MAKEEMPTY, REMOVE, ISEMPTY, ISDECREASING, FINDPREVIOUS, INSERT, QUIT, PRINT, INSERTBACK, AUTOCHECK };
 
 CHOICE menu();
 void printList( const List<int>& l );
@@ -73,6 +73,74 @@ int main(int argc, char* argv[]) {
 			cin  >> value; 
 			list.insert_back( value );
 			break;
+		case AUTOCHECK:
+			int successCounter = 0;
+			int failCounter = 0;
+			cout << "Check all options for isInDecreasingOrder";
+
+			//start test
+			list.makeEmpty();		
+			list.insert(5);
+			list.insert(6);
+			list.insert(6);
+			list.insert(7);
+			list.insert(7);
+			printList( list );
+			if (list.isInDecreasingOrder()) {
+				successCounter++;
+				cout << "test succeded" << endl;
+			} else {
+				failCounter++;
+				cout << "test failed" << endl;
+			}			
+			//end test
+			
+			//start test
+			list.makeEmpty();		
+			list.insert(5);
+			list.insert(5);
+			list.insert(5);			
+			printList( list );
+			if (list.isInDecreasingOrder()) {
+				failCounter++;
+				cout << "test failed" << endl;				
+			} else {
+				successCounter++;
+				cout << "test succeded" << endl;
+			}			
+			//end test
+
+			//start test
+			list.makeEmpty();		
+			list.insert(3);
+			list.insert(2);
+			list.insert(1);			
+			printList( list );
+			if (list.isInDecreasingOrder()) {
+				failCounter++;
+				cout << "test failed" << endl;				
+			} else {
+				successCounter++;
+				cout << "test succeded" << endl;
+			}			
+			//end test
+
+			//start test
+			list.makeEmpty();		
+			list.insert(1);
+			list.insert(2);
+			list.insert(3);			
+			printList( list );
+			if (list.isInDecreasingOrder()) {
+				successCounter++;
+				cout << "test succeded" << endl;				
+			} else {
+				failCounter++;
+				cout << "test failed" << endl;
+			}			
+			//end test
+			cout << "number of tests succeded: " << successCounter << endl;
+			cout << "number of tests failed: " << failCounter << endl;
 	}	
 
 	} while (choice != QUIT);
@@ -176,7 +244,7 @@ void printList( const List<int>& l ) {
 CHOICE menu() {
 	char choice;
 	CHOICE result;
-	cout << "(M)akeEmpty I(s)Empty Is(D)ecreasing (R)emove (I)nsert (F)indPrevious (P)rint Insert(B)ack (Q)uit: " << endl;
+	cout << "(M)akeEmpty I(s)Empty Is(D)ecreasing (R)emove (I)nsert (F)indPrevious (P)rint Insert(B)ack (Q)uit (A)utoCheck: " << endl;
 	cin  >> choice;
 	switch( choice ) {
 	case 'M':
@@ -214,6 +282,10 @@ CHOICE menu() {
 	case 'P':
 	case 'p':
 		result = PRINT;
+		break;
+	case 'A':
+	case 'a':
+		result = AUTOCHECK;
 		break;
 	}
 
